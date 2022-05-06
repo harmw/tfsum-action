@@ -16,9 +16,14 @@ try:
     workspace = os.environ["GITHUB_WORKSPACE"]
     # format: refs/pull/1/merge
     ref = os.environ["GITHUB_REF"]
+    event = os.environ["GITHUB_EVENT_NAME"]
     skip_noop = bool(os.environ.get("INPUT_SKIP_NOOP", True))
 except Exception as e:
     logging.error(f"Failed to load key from environment: {e}")
+    sys.exit()
+
+if event != "pull_request":
+    logging.info(f"Not responding to event of type {event}")
     sys.exit()
 
 plan_file = workspace + "/" + os.environ.get("INPUT_PLAN_FILE", "tf.plan.json")
