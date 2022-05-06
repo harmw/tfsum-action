@@ -27,8 +27,14 @@ try:
     with open(plan_file) as jf:
         plan = json.load(jf)
 except Exception as e:
-    logging.error(f"Failed to open {plan_file}: {e}")
-    sys.exit()
+    logging.warning("Trying alternative method to read file...")
+    try:
+        with open(plan_file) as jf:
+            next(jf)
+            plan = json.load(jf)
+    except Exception as e:
+        logging.error(f"Failed to read plan: {e}")
+        sys.exit()
 
 actions = {}
 
