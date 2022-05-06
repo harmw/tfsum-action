@@ -3,10 +3,9 @@ name: Terraform Plan Summary
 description: This action will update a PR with a single-line terraform plan summary
 
 inputs:
-  token:
+  github_token:
     required: true
     description: GitHub token that is allowed to create comments on pull requests
-    default: ${{ secrets.GITHUB_TOKEN }}
 
 runs:
   using: docker

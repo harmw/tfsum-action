@@ -11,7 +11,7 @@ logging.info("Running TFsum")
 try:
     # format: myname/something
     repo_name = os.environ["GITHUB_REPOSITORY"]
-    github_token = os.environ["INPUT_TOKEN"]
+    github_token = os.environ["INPUT_GITHUB_TOKEN"]
     # this should be mounted once the action is running, it contains the root of the checkout
     workspace = os.environ["GITHUB_WORKSPACE"]
     # format: refs/pull/1/merge
