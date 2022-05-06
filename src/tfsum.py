@@ -62,7 +62,7 @@ try:
     repo = gh.get_repo(repo_name)
     pr = repo.get_pull(pr_number)
     logging.info("Creating comment")
-    pr.create_issue_comment(f":wrench: Terraform plan summary: `{summary}`")
+    pr.create_issue_comment(f":construction: Terraform plan summary: `{summary}`")
 
 except Exception as e:
     logging.error(f"Failed to connect: {e}")
